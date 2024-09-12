@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 /*SE NECESITA WIDTHSIDEBAR PARA LA CLASE MARGIN-LEFT*/
@@ -42,7 +42,8 @@ h1{
   text-align: end;
 
   @media screen and (width < 788px) {
-    --padding-right: 10px;
+    --padding-right: 13px;
+    font-size:small;
   }
 
 
@@ -104,6 +105,12 @@ h1{
 
     &.margin-left{
       margin-left: calc(var(--widthSideBar) + var(--margin-left-first-column));
+    }
+  }
+
+  .main-card{
+    .circle-inside{
+      border: 5px groove #5e5e5e;
     }
   }
 
