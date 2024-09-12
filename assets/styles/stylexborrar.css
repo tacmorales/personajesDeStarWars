@@ -1,0 +1,67 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+}
+
+main{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+aside {
+  width: 15%;
+  --thickLine: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 20px 0 0;
+  border-right: var(--thickLine) solid #fe4747;
+  margin-right: 2em;
+
+  & div{
+    text-align: end;
+  }
+
+  & div::after {
+    --sizePoint: 15px;
+    content: "";
+    position: absolute;
+    background-color: #f1c40f;
+    width: var(--sizePoint);
+    height: var(--sizePoint);
+    border-radius: 50%;
+    transform: translate( calc(20px + var(--thickLine)/2 - var(--sizePoint)/2) , 0 );
+  }
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .card{
+    display: flex;
+    width: calc(100%/4);
+    background-color: antiquewhite;
+    padding: 0 1em 0 1em;
+    margin: 1em;
+    border-radius: 0.4em;
+  }
+
+  .circle-inside{
+    margin: 1.5em 1em 0 0.5em;
+    padding: 1em;
+    background-color: #f1c40f;
+    height: 1em;
+    border-radius: 50%;
+  }
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
