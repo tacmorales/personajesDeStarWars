@@ -1,145 +1,187 @@
-*{
+* {
   box-sizing: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*SE NECESITA WIDTHSIDEBAR PARA LA CLASE MARGIN-LEFT*/
-:root{
+:root {
   --widthSideBar: 100px;
+  --thickLine: 3px;
+  --padding-right: 20px;
+  --sizePoint: 15px;
 
-  @media screen and (width < 788px) {
+  @media screen and (width < 768px) {
     --widthSideBar: 60px;
+    --padding-right: 15px;
   }
 }
 
-body{
+body {
   height: 100vh;
   margin: 0;
+  background-color: rgb(22, 22, 22);
 }
 
-header{
-  background-color: black;
+header {
+  background-color: rgb(22, 22, 22);
 }
 
-h1{
+h1,
+h2,
+h3 {
   margin: 0;
-  padding: 0.67em;
-  color:white;
-  /* text-shadow: 5px black; */
-  letter-spacing: 5px;
-  font-family: 'Star Wars', sans-serif;
+}
+
+p {
+  margin: 0.5em 0 0 0;
+}
+
+h1 {
+  padding: 0.3em 1em 0.1em 1em;
+  color: white;
+  letter-spacing: 4px;
+  font-family: "Star Wars", sans-serif;
   text-align: center;
+  line-height: calc(50px);
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #5e5e5e;
 }
 
 /*PRIMERA COLUMNA*/
-.indexes{
+.indexes {
   font-size: large;
   font-weight: bold;
-  --thickLine: 3px;
-  --padding-right: 20px;
   padding-right: var(--padding-right);
   width: var(--widthSideBar);
   text-align: end;
 
-  @media screen and (width < 788px) {
-    --padding-right: 13px;
-    font-size:small;
+  @media screen and (width < 768px) {
+    font-size: small;
   }
 
-
-  &::after{
-    --sizePoint: 15px;
+  &::after,
+  &::before { /* mismas propiedades para la linea y el punto */
     content: "";
     position: absolute;
+  }
+
+  &::after { /*punto*/
     background-color: #fffc57;
     border: 3px solid #5e5e5e;
     width: var(--sizePoint);
     height: var(--sizePoint);
-    border-radius: 50%;
-    transform: translate( calc(var(--padding-right) + var(--thickLine)/2 - var(--sizePoint)/2 - 2.5px) , 0 );
+    border-radius: 50%; /* para que sea un circulo*/
+    transform: translate(
+      calc(
+        var(--padding-right) - (var(--thickLine) + var(--sizePoint))/2 
+      ), /*horizontalmente suma el padding y resta el grosor de la linea y el ancho del circulo, ambos dividio por 2 ya que queremos que este a la mitad -probar borrando el "/2" del final*/
+      0 /*verticalmente no se mueve*/
+    );
   }
 
-  &::before{
-    content: "";
-    position: absolute;
+  &::before { /*linea*/
     background-color: #5e5e5e;
-    width: 3px;
+    width: var(--thickLine);
     height: 100%;
     top: 0;
     left: var(--widthSideBar);
   }
 }
 
-/*TARJETAS CON INFORMACIÓN*/
-.content {
-  flex-grow: 1;
+.cards-group {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  width: calc(100% - var(--widthSideBar));
+  padding: 1em 1em 1em 1em;
+}
 
-  --margin-left-first-column: 2em;
+/*TARJETAS CON INFORMACIÓN*/
+.card {
+  background-color: ivory;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  padding: 1em;
+  margin: 0 0 1em 2em;
+  border-radius: 0.4em;
+  width: calc((100% - 6em)/ 3);
 
-  .row{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
+  @media screen and (width < 992px) {
+    width: calc((100% - 2em)/ 2);
+  }
+
+  @media screen and (width < 576px) {
+    width: 100%;
+  }
+
+  .circle-inside {
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    border-top: 1px solid #5e5e5e;
+    flex: 0 0 auto;
+    letter-spacing: -1px;
   }
 
-  .card{
-    background-color: white;
-    display: flex;
-    width: calc((100% - (var(--widthSideBar)) - var(--margin-left-first-column))/3.5);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    padding: 0 1em 0 1em;
-    margin: 1em 0 1em var(--margin-left-first-column);
-    border-radius: 0.4em;
-
-    .circle-inside{
-      margin: 1.5em 1em 0 0.5em;
-      padding: 1em;
-      height: 1em;
-      border-radius: 50%;
-    }
-
-    &.margin-left{
-      margin-left: calc(var(--widthSideBar) + var(--margin-left-first-column));
-    }
-  }
-
-  .main-card{
-    .circle-inside{
-      border: 5px groove #5e5e5e;
-    }
-  }
-
-  @media screen and (width < 788px) {
-    --margin-left-first-column: 1em;
-    .card{
-      width: calc(100% - var(--widthSideBar) - var(--margin-left-first-column));
-    }
+  .card-content {
+    margin-left: 1em;
   }
 }
 
-#first-group{
+.main-card {
+  .circle-inside {
+    width: 40px;
+    height: 40px;
+    border: 5px groove #5e5e5e;
+  }
+}
+
+#first-group {
   background-color: #ffb6ae;
-  .circle-inside{
+  .circle-inside {
     background-color: #fa8072;
   }
 }
 
-#second-group{
+#second-group {
   background-color: #c1ffc1;
-  .circle-inside{
+  .circle-inside {
     background-color: #90ee90;
   }
 }
 
-#third-group{
-  border-bottom: 1px solid #5e5e5e;
+#third-group {
   background-color: #a0d9ff;
-  .circle-inside{
+  .circle-inside {
     background-color: #87cefa;
   }
 }
+
+#fourth-group {
+  border-bottom: 1px solid #5e5e5e;
+  background-color: #d6d6d6;
+  .circle-inside {
+    background-color: #e6e6e6;
+  }
+}
+
+.loading{
+  background-color: #5e5e5e !important;
+}
+
+.error{
+  background-color: #c20000 !important;
+  color: white;
+  .circle-inside {
+    background-color: #660101 !important;
+  }
+}
+

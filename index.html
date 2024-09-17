@@ -7,7 +7,7 @@
   <title>Personajes de Star Wars</title>
   <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles/style.css">
-  <script src="assets/script/script.js"></script>
+  <script src="assets/script/script.js" type="module"></script>
 </head>
 
 <body>
@@ -15,47 +15,68 @@
     <h1>Personajes de la Saga de Star Wars y sus Dimensiones.</h1>
   </header>
   <main>
-    <div class="content">
-      <div id="first-group" class="row">
-        <div class="indexes">1 - 5</div>
+    <section id="first-group" class="row">
+      <div class="indexes">1 - 5</div>
+      <div class="cards-group">
         <div class="card main-card">
           <div class="circle-inside"></div>
-          <div>
+          <div class="card-content">
             <h2>En esta sección...</h2>
             <p>Encontrarás información sobre los personajes más populares de las películas.</p>
           </div>
         </div>
       </div>
-      <div id="second-group" class="row">
-        <div class="indexes">6 - 10</div>
+      <!-- aqui se insertaran los personajes -->
+    </section>
+    <section id="second-group" class="row">
+      <div class="indexes">6 - 10</div>
+      <div class="cards-group">
         <div class="card main-card">
           <div class="circle-inside"></div>
-          <div>
+          <div class="card-content">
             <h2>En esta sección...</h2>
             <p>Encontrarás información sobre personajes secundarios importantes.</p>
           </div>
         </div>
       </div>
-      <div id="third-group" class="row">
-        <div class="indexes">11 - 15</div>
+      <!-- aqui se insertaran los personajes -->
+    </section>
+    <section id="third-group" class="row">
+      <div class="indexes">11 - 15</div>
+      <div class="cards-group">
         <div class="card main-card">
           <div class="circle-inside"></div>
-          <div>
+          <div class="card-content">
             <h2>En esta sección...</h2>
             <p>Encontrarás otros personajes significativos.</p>
           </div>
         </div>
       </div>
-    </div>
+      <!-- aqui se insertaran los personajes -->
+    </section>
+    <section id="fourth-group" class="row">
+      <div class="indexes">16 - 20</div>
+      <div class="cards-group">
+        <div class="card main-card">
+          <div class="circle-inside"></div>
+          <div class="card-content">
+            <h2>En esta sección...</h2>
+            <p>Encontrarás otros personajes significativos.</p>
+          </div>
+        </div>
+      </div>
+      <!-- aqui se insertaran los personajes -->
+    </section>
+
   </main>
 
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
   <template id="characterCard">
     <div class="card">
       <div class="circle-inside"></div>
-      <div>
-        <h3>En esta sección...</h3>
-        <p>Encontrarás información sobre los personajes más populares de las películas.</p>
+      <div class="card-content">
+        <h3></h3>
+        <p></p>
       </div>
     </div>
   </template>
